@@ -1,0 +1,86 @@
+резиденты РФ и США Владимир Путин и Дональд Трамп проведут в субботу вечером телефонный разговор, который станет первым после официального вступления Трампа в должность главы государства; до инаугурации лидеры имели возможность пообщаться один раз по телефону.В пятницу старший советник президента США Келлианн Конуэй в интервью телеканалу  заявила, что вопрос отмены санкций против РФ обсуждается.По мнению Масленникова, первым тему санкций затронет Дональд Трамп."Вопрос санкций — это один из решающих моментов, которые позволяют прогнозировать развитие отношений конструктивных в будущем. Что касается того, как пойдет этот разговор — то, что вопрос этот так или иначе будет затронут — это понятно. Я допускаю, что его поставит наверняка, прежде всего, господин Трамп. Тем более что на завтра запланирован разговор Трампа с госпожой Меркель как раз по вопросу взаимоотношений с Россией и Украиной", — сказал Масленников РИА Новости.Пресс-секретарь Белого дома Шон Спайсер сообщил в пятницу, что Дональд Трамп в субботу поговорит по телефону с президентом РФ Владимиром Путиным, президентом Франции Франсуа Олландом и канцлером Германии Ангелой Меркель.Ранее советник Трампа Келлианн Конуэй сообщила в интервью телеканалу , что Трамп и российский лидер Владимир Путин в ходе телефонного разговора обсудят, как "побороть радикальный исламский терроризм", а также ряд других вопросов.
+				$(document).ready(function() {
+					if (typeof html5videoFunctions === 'function') {
+						html5videoFunctions('html5video__1486142543');
+					}
+
+					if (typeof html5videoCountersFunction === 'function') {
+						html5videoCountersFunction('html5video__1486142543');
+					}
+				});
+			
+			$(document).ready(function(){
+			rianplayer("mediaPlayer__1486142543").setup({
+			width: '100%',
+			height: '100%',
+
+			'modes': [
+			
+
+		{
+		type: 'flash',
+		
+				src: '/i/swf/rian-media-player/MediaPlayer.swf',
+					
+		config: {
+		id: '38601907',
+		
+		sourceId: '38601907',
+		article_id: '1486689053',
+		info_id: '1486142543',
+		adv: '1',
+		playlistUrl : '/services/smil_inject_video.xml',
+		playlistParams :
+		'https%3A%2F%2Fnfw.ria.ru%2Fflv%2Fmedia.aspx%3FID%3D38601907%26Customer%3Dria.ru%3A%3Apolitics%3A%3Ainject%26Source%3Drian%26img%3Dhttps%253A%252F%252Fcdn1.img.ria.ru%252Fimages%252F148617%2F70%2F1486177008.jpg%26nolog%3D0&directLink=https%3A%2F%2Fria.ru%2Fpolitics%2F20170128%2F1486689053.html',
+		flashvars: {
+		libraryPath: '/i/swf/rian-media-player/lib',id: 'mediaPlayer',info_id:1486142543,autostart:0,version: '1.4.23',directLink: 'https://ria.ru/politics/20170128/1486689053.html'
+		}
+		}
+		}
+	,
+
+		{
+		type: 'html5',
+		config: {
+		id: '1486142543',
+		autostart: '',
+		sourceId: '38601907',
+		article_id: '1486689053',
+		info_id: '1486142543',
+		adv: '1',
+		containerId: 'html5video__1486142543'
+		
+		}
+		}
+	,
+		{
+			type: 'download',
+			config: {
+				containerId: 'downloadFlashPlayer__1486142543'
+			}
+		}
+	
+			]
+			});
+
+			})
+		
+				$(document).ready(function(){
+					if (typeof tnsVideosCounter == 'object') {
+						tnsVideosCounter['1486142543'] = {
+							'sourceId' : '1',
+							'tnsTypes' : [
+								'rian_illustrations-',
+								'rian_'
+							]
+						};
+					}
+
+				});
+			
+				$(document).ready(function(){
+					if (typeof gaVideosCounter == 'object') {
+						gaVideosCounter['1486142543'] = 'Illustration';
+					}
+				});
+			

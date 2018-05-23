@@ -1,0 +1,86 @@
+вступил в должность президента США 20 января."Президент США в первую очередь сейчас занят американскими делами", — сказал Песков, отвечая на вопрос о сроках встречи.Дата встречи может обсуждаться во время телефонного разговора двух президентов, отметил он.Пресс-секретарь российского президента добавил, что скорее можно говорить о встрече в "ближайшие месяцы", но никаких точных сведений о сроках или месте проведения пока нет.Ранее британские СМИ спекулировали на тему возможной встречи двух лидеров в Исландии, однако представители обеих сторон опровергли слухи.
+				$(document).ready(function() {
+					if (typeof html5videoFunctions === 'function') {
+						html5videoFunctions('html5video__1486142543');
+					}
+
+					if (typeof html5videoCountersFunction === 'function') {
+						html5videoCountersFunction('html5video__1486142543');
+					}
+				});
+			
+			$(document).ready(function(){
+			rianplayer("mediaPlayer__1486142543").setup({
+			width: '100%',
+			height: '100%',
+
+			'modes': [
+			
+
+		{
+		type: 'flash',
+		
+				src: '/i/swf/rian-media-player/MediaPlayer.swf',
+					
+		config: {
+		id: '38601907',
+		
+		sourceId: '38601907',
+		article_id: '1486192922',
+		info_id: '1486142543',
+		adv: '1',
+		playlistUrl : '/services/smil_inject_video.xml',
+		playlistParams :
+		'https%3A%2F%2Fnfw.ria.ru%2Fflv%2Fmedia.aspx%3FID%3D38601907%26Customer%3Dria.ru%3A%3Apolitics%3A%3Ainject%26Source%3Drian%26img%3Dhttps%253A%252F%252Fcdn1.img.ria.ru%252Fimages%252F148617%2F70%2F1486177008.jpg%26nolog%3D0&directLink=https%3A%2F%2Fria.ru%2Fpolitics%2F20170121%2F1486192922.html',
+		flashvars: {
+		libraryPath: '/i/swf/rian-media-player/lib',id: 'mediaPlayer',info_id:1486142543,autostart:0,version: '1.4.23',directLink: 'https://ria.ru/politics/20170121/1486192922.html'
+		}
+		}
+		}
+	,
+
+		{
+		type: 'html5',
+		config: {
+		id: '1486142543',
+		autostart: '',
+		sourceId: '38601907',
+		article_id: '1486192922',
+		info_id: '1486142543',
+		adv: '1',
+		containerId: 'html5video__1486142543'
+		
+		}
+		}
+	,
+		{
+			type: 'download',
+			config: {
+				containerId: 'downloadFlashPlayer__1486142543'
+			}
+		}
+	
+			]
+			});
+
+			})
+		
+				$(document).ready(function(){
+					if (typeof tnsVideosCounter == 'object') {
+						tnsVideosCounter['1486142543'] = {
+							'sourceId' : '1',
+							'tnsTypes' : [
+								'rian_illustrations-',
+								'rian_'
+							]
+						};
+					}
+
+				});
+			
+				$(document).ready(function(){
+					if (typeof gaVideosCounter == 'object') {
+						gaVideosCounter['1486142543'] = 'Illustration';
+					}
+				});
+			

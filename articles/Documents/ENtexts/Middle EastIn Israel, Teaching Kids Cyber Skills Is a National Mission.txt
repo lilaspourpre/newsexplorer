@@ -1,0 +1,33 @@
+BEIT SHEMESH, Israel —  In some Israeli schools, fourth-graders learn computer programming while gifted 10th-graders take after-school classes in encryption tactics, coding and how to stop malicious hacking. The country even has two new kindergartens that teach computer skills and robotics.
+The training programs — something of a boot camp for cyber defense — are part of Israel's quest to become a world leader in cybersecurity and cyber technology by placing its hopes in the country's youth.
+To that end, Israel announced this week the establishment of a national center for cyber education, meant to increase the talent pool for military intelligence units and prepare children for eventual careers in defense agencies, the high-tech industry and academia.
+"You students need to strengthen us with your curiosity," Prime Minister Benjamin Netanyahu told an Israeli cyber technologies expo, sitting next to high school students in a training program overseen by the defense establishment. "Your years in the security services will be golden years for the security of the nation."
+Israel has long branded itself the "Cyber Nation" but authorities say they have been facing a shortage of cyber experts to keep up with the country's defense needs and keep its cybersecurity industry booming.
+To build up a wellspring of talent, Israel is starting young: teaching children the basic building blocks of the web.
+"In the first grade, they learn the letters, then how to read and how to write. We are building the next level of knowledge — how to code," said Sagy Bar of the Rashi Foundation, a philanthropic group running the cyber education center as a joint venture with Israel's defense establishment and academic institutions.
+The center will also oversee educational programs launched in recent years, including the Education Ministry's Gvahim pilot program that introduced computer and robotic classes to the fourth-grade curriculum in 70 schools, and the after-school Magshimim program, which trains talented high-schoolers from underprivileged areas in college-level cyber skills.
+Drawing youth into the highly technical field of cybersecurity is not a novelty, and the United States and Britain have implemented similar training programs.
+The National Security Agency, America's global surveillance and intelligence agency, co-sponsors free cybersecurity summer camps throughout the U.S. for students and teachers from kindergarten through high school. The GenCyber program seeks to improve cybersecurity teaching in schools as early as kindergarten.
+GCHQ, the U.K.'s powerful signals intelligence agency, has a host of youth outreach initiatives, including an annual competition for amateurs and youngsters at dramatic venues such as Winston Churchill's World War II-era bunker under central London.
+In 2015, the competition invested in whizz kid-friendly puzzle games — including a specially designed Minecraft level — to pique children's interest. Also, GCHQ is trying to bridge the gender gap and last month announced a national cybersecurity challenge for schoolgirls aged 13 to 15.
+In Israel, the two cyber training programs feed Israel's vaunted military intelligence Unit 8200, which intercepts digital communications and collects intelligence on Israel's enemies across the Middle East — the Israeli equivalent of America's NSA.
+Many members of the unit eventually move on to Israel's high-tech and cybersecurity industries. Some of the most successful technology companies have been founded by the unit's veterans.
+Military service is compulsory for most Jewish high school graduates in Israel, giving military intelligence the power to enlist the country's best and brightest.
+For military intelligence, it's a win-win situation.
+"Israeli talent comes mandatorily to the army," Col. R, deputy head of Unit 8200, told The Associated Press over the phone.
+The colonel, who could only be identified by her first initial under military regulations, said Unit 8200 is trying to encourage more girls to study computer sciences and eventually join the unit as "cyberists."
+In the Magshimim program, applicants must first pass a home quiz of riddles and challenges involving math, logic and algorithms. Previous computer expertise is not needed, and they can even look up answers online or ask a parent for help. The idea is to recruit students who are not intimidated by challenges, organizers say.
+Those accepted to the program meet twice a week after school for three-hour classes, complete 10 hours of cyber-related homework a week, and participate in workshops twice a year.
+During a recent workshop for 10th-graders at a school in the central city of Beit Shemesh, a group of 15 religious Jewish girls attended a lecture on artificial intelligence. One of the girls was knitting an orange yarmulke during class.
+In a darkened classroom across the hall, a group of teens in sweatshirts and sweatpants hunched over laptops, playing a simulation game: a fictional network of computers had been hacked, and they had 45 minutes to learn an unfamiliar computer code, regain control of the network, and hack into the hacker's system to determine his identity.
+"I broke in!" a student suddenly exclaimed. The fictional hacker was a popular cartoon character.
+Glued to his computer, 16-year-old Shalev Goodman said he hopes to use his cyber skills in military intelligence when he enlists.
+"I'm not the most athletic person," he said. "I do want to give something to the country. So cyber is a good thing to do."
+Program leaders say cyber ethics are enforced — students who use their skills to hack would not be accepted into the military and would likely ruin their future in the cyber industry.
+But once in the army, the definition of ethics can become blurred. In 2014, a group of reservists in Unit 8200 signed a letter protesting its role in surveillance of Palestinians.
+One of the soldiers said the unit was sometimes asked to perform ethically questionable tasks, like spying on Palestinians uninvolved in violence.
+"It feels a bit like a game, like a cool computer game," said Gilad, who could only give his first name because Israel's military censor has prohibited the protesters from revealing their full identity.
+During his compulsory army service, Gilad said he worked part time in programming. "You develop apathy, moral numbness ... You are far away from the target," he recounted of those days.
+Still, the computer skills Gilad gained while in the army helped him get his current job in the high-tech industry, he said.
+__
+Associated Press writer Raphael Satter in London contributed to his report. Follow Daniel Estrin on Twitter at www.twitter.com/danielestrin .
