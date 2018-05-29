@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import all.ui.pyqt.article_parser as ap
+import pyqt.article_parser as ap
 import database_search_engine as dse
 
 
@@ -27,24 +27,23 @@ class RequestParser(dse.SQL_query):
             elif req == 'of':  # get persons of another person
                 relations, cluttexts = {}, {}
                 for qu in requete[1]:
-                    print qu
+                    print(qu)
                     pre_query = self.texts(alias=[qu])  # для каждого персонажа мы находим список текстов
-                    print pre_query
+                    print(pre_query)
                     self.cur.execute(pre_query)  # выполняем запрос
                     texts = [i[1] for i in self.cur.fetchall()]  # список текстов
-                    print texts
+                    print(texts)
                     self.cur.execute(self.clusters(textname=texts))
                     relations[qu] = self.cur.fetchall()  # для каждого персонажа добавляем кластеры из каждого текста
-                print relations
+                print(relations)
                 clusters = [el for lst in relations.values() for el in lst]  # объединяем кластеры в один список
-                print clusters
+                print(clusters)
                 colnames = [desc[0] for desc in self.cur.description]  # получение имен столбцов
                 for cluster in clusters:  # для каждого кластера получить список текстов, в которых он встречается (для построения графа)
                     self.cur.execute(self.texts(alias=[cluster[1]]))
                     cluttexts[cluster[1]] = self.cur.fetchall()  # кластер:[текст1, текст2]
-                print [clusters, colnames, cluttexts]
+                print([clusters, colnames, cluttexts])
                 return [clusters, colnames, cluttexts]
-
             else:
                 return [[['Verify the preposition and the value']], ['Error']]
         elif 'info' in requete[0]:  # получить информацию по графу
@@ -77,7 +76,8 @@ class RequestParser(dse.SQL_query):
                     if i in requete:
                         requete = requete.replace('get ', '').split(" " + i + " ")
                         return self.select_construtor(requete, i)  # дальнейший парсинг и формирование SQL запроса
-            except:
+            except Exception as e:
+                print(e)
                 return [[['Problems with "get" query']], ['Error']]
         elif "drop" in requete:  # если происходит удаление статьи
             try:
@@ -136,7 +136,7 @@ class UploadParser(dse.SQL_query):
                                           values=information[:3])
             if information[3] == 'ru' or information[3] == 'en':
                 return self.app.character_recognition(information[0])
-        except Exception, e:
+        except Exception as e:
             return e
 
     def return_clusters(self, names):
@@ -159,6 +159,6 @@ class UploadParser(dse.SQL_query):
             else:
                 cluster_id = copies[alias]
             for name in clusters.get(alias):
-                person_id = self.insert('persons', column_names=['persname', 'clustid'], values=[name.encode('utf-8'), cluster_id])
+                person_id = self.insert('persons', column_names=['persname', 'clustid'], values=[name, cluster_id])
                 self.insert('ptrelations', column_names=['personid', 'textid'], values=[person_id, text_id])
         return u"en: done successfully\nru: успешно загружено\nfr: succes de chargement"

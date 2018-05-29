@@ -1,7 +1,6 @@
 # -*- coding: cp1251 -*-
 import codecs
 import os
-
 import articleParser
 
 
@@ -19,7 +18,7 @@ class TextGetter():
     def fileAdderRU(self, link):
         newAParser = articleParser.ArticleParser()
         text = newAParser.RussianParser(link)
-        print text[0]
+        print(text[0])
         t = text[0].replace("\"", "")
         with codecs.open(self.script_dir+'/RUtexts/'+t.encode("cp1251")+'.txt', "a") as f:
             f.write(text[1].encode("utf-8"))

@@ -19,7 +19,7 @@ def getLinks():
     elem = driver.find_elements_by_class_name("b-list__item")
     for el in elem:
         lst.append(el.find_element_by_tag_name("a").get_attribute("href"))
-    print len(lst)
+    print(len(lst))
     driver.close()
     return lst
 

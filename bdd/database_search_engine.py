@@ -1,38 +1,38 @@
 # -*- coding: utf-8 -*-
-import psycopg2, time
+import sqlite3
+import time
 import xml.etree.ElementTree as ET
-from psycopg2.extensions import adapt
-import os
+
 
 class SQL_query():
     """
     класс, который осуществляет поиск в базе данных
     поддерживает возможность поиска информации и добаления новых данных (insert)
     """
+
     def __init__(self):
         self.con = None
         self.cur = None
         self.DB_RECONNECT_DELAY_SEC = 1
 
-    def open_config(self, config): #находит в файле xml код и строит дерево, возвращает строку для коннекта
+    def open_config(self, config):  # находит в файле xml код и строит дерево, возвращает строку для коннекта
         tree = ET.parse(config)
         root = tree.getroot()
         string = ""
-        for child in root: #соединяем данные в строку user=postgres и тд
-            string+=child.tag+"='"+child.text+"' "
+        for child in root:  # соединяем данные в строку user=postgres и тд
+            string += child.tag + "='" + child.text + "' "
         return string
 
-    def connect(self): #подключение к БД
+    def connect(self):  # подключение к БД
         try:
-            self.path = os.path.abspath(__file__).replace("\\database_search_engine.pyc", "")
-            self.path = self.path.replace("\\database_search_engine.py", "")
-            self.con = psycopg2.connect(self.open_config(self.path+"\\config.xml"))
+            self.con = sqlite3.connect("../bdd/sqlFile/newsfeeds.db")
             self.cur = self.con.cursor()
-        except psycopg2.DatabaseError, e:
+        except sqlite3.DatabaseError as e:
+            print(e)
             if self.con:
                 self.con.rollback()
 
-    def close(self): #отключение от БД
+    def close(self):  # отключение от БД
         if self.con:
             self.con.close()
 
@@ -40,7 +40,7 @@ class SQL_query():
         while not self.con:
             self.connect()
             if not self.con:
-            # wait for a second
+                # wait for a second
                 time.sleep(self.DB_RECONNECT_DELAY_SEC)
 
     def __select_condition(self, columnname, data):
@@ -52,11 +52,19 @@ class SQL_query():
         """
         condition = []
         for i in data:
-            try:
-                condition.append(columnname + """=""" + psycopg2.extensions.adapt(i).getquoted())
-            except:
-                condition.append(columnname + """= '"""""+ i +"""'""""")
-        return """("""+""" OR """.join(condition)+""") AND """
+            condition.append(columnname + """=""" + self.checktype(i))
+        return """(""" + """ OR """.join(condition) + """) AND """
+
+    def checktype(self, inputdata):
+        if type(inputdata) == int:
+            return str(inputdata)
+        elif type(inputdata) == str:
+            if not inputdata.isdigit() and not inputdata.isdecimal():
+                return '"' + inputdata + '"'
+            else:
+                return inputdata
+        else:
+            return str(inputdata)
 
     def texts(self, persons=None, alias=None, textname=None):
         """
@@ -67,19 +75,17 @@ class SQL_query():
         :return: возвращает номер и название текста (textid, textname)
         """
         self.ensure_connection()
-        query = """SELECT textid, textname FROM texts """
-        if any([alias!=None, persons!=None]):
-            query += """NATURAL JOIN ptrelations NATURAL JOIN persons """
-            if alias!=None:
-                query += """NATURAL JOIN clusters """
-        query += """WHERE """
-        if alias!= None:
+        query = """SELECT texts.textid, texts.textname FROM texts """
+        if any([alias != None, persons != None]):
+            query += """ JOIN ptrelations JOIN persons JOIN clusters ON ptrelations.personid=persons.personid AND ptrelations.textid=texts.textid AND clusters.clustid=persons.clustid"""
+        query += """ WHERE """
+        if alias != None:
             query += self.__select_condition("""alias""", alias)
-        if persons!=None:
+        if persons != None:
             query += self.__select_condition("""persname""", persons)
-        if textname!=None:
-            query += self.__select_condition("""textname""",textname)
-        query+="""1=1;"""
+        if textname != None:
+            query += self.__select_condition("""textname""", textname)
+        query += """1=1;"""
         return query
 
     def ptrelations(self, textid=None, personid=None):
@@ -90,10 +96,10 @@ class SQL_query():
         """
         self.ensure_connection()
         query = """SELECT * FROM ptrelations WHERE """
-        if textid!=None:
+        if textid != None:
             query += self.__select_condition("""textid""", textid)
-        if personid !=None:
-            query += self.__select_condition("""personid""",personid)
+        if personid != None:
+            query += self.__select_condition("""personid""", personid)
         query += """1=1;"""
         return query
 
@@ -106,21 +112,17 @@ class SQL_query():
         :return: возвращает номер и имя персонажа (personid, persname)
         """
         self.ensure_connection()
-        query = """SELECT personid, persname"""
-        if personid!=None:
-            query += """, clustid"""
-        query+=""" FROM persons """
-        if alias!=None:
-            query += """NATURAL JOIN clusters """
-        if textname!=None:
-            query += """NATURAL JOIN ptrelations NATURAL JOIN texts """
-        query += """WHERE """
+        query = """SELECT persons.personid, persname"""
         if personid != None:
-            query += self.__select_condition("""personid""",personid)
-        if alias!= None:
-            query += self.__select_condition("""alias""",alias)
-        if textname!=None:
-            query += self.__select_condition("""textname""",textname)
+            query += """, clustid"""
+        query += """ FROM persons JOIN clusters JOIN ptrelations JOIN texts ON ptrelations.personid=persons.personid AND ptrelations.textid=texts.textid AND clusters.clustid=persons.clustid"""
+        query += """ WHERE """
+        if personid != None:
+            query += self.__select_condition("""personid""", personid)
+        if alias != None:
+            query += self.__select_condition("""alias""", alias)
+        if textname != None:
+            query += self.__select_condition("""textname""", textname)
         query += """1=1;"""
         return query
 
@@ -131,22 +133,18 @@ class SQL_query():
         :return: возвращает номер и имя кластера персонажа
         """
         self.ensure_connection()
-        if textname!=None:
-            query = """SELECT clustid, alias, textid FROM clusters """
+        if textname != None:
+            query = """SELECT clusters.clustid, alias, texts.textid FROM clusters JOIN persons JOIN ptrelations JOIN texts ON ptrelations.personid=persons.personid AND ptrelations.textid=texts.textid AND clusters.clustid=persons.clustid"""
         else:
-            query = """SELECT clustid, alias FROM clusters """
-        if any([textname!=None, persons!=None]):
-            query += """NATURAL JOIN persons """
-            if textname!=None:
-                query += """NATURAL JOIN ptrelations NATURAL JOIN texts """
-        query += """WHERE """
-        if textname!=None:
-            query += self.__select_condition("""textname""",textname)
-        if persons!=None:
-            query += self.__select_condition("""persname""",persons)
+            query = """SELECT clusters.clustid, alias FROM clusters JOIN persons JOIN ptrelations JOIN texts ON ptrelations.personid=persons.personid AND ptrelations.textid=texts.textid AND clusters.clustid=persons.clustid"""
+        query += """ WHERE """
+        if textname != None:
+            query += self.__select_condition("""textname""", textname)
+        if persons != None:
+            query += self.__select_condition("""persname""", persons)
         query += """1=1;"""
-        if alias!=None:
-            query = """SELECT * FROM clusters WHERE """+self.__select_condition("""alias""",alias)+"""1=1;"""
+        if alias != None:
+            query = """SELECT * FROM clusters WHERE """ + self.__select_condition("""alias""", alias) + """1=1;"""
         return query
 
     def insert(self, table_name, column_names=None, values=[]):
@@ -157,25 +155,24 @@ class SQL_query():
         :return: просто commit it
         """
         self.ensure_connection()
-        self.cur.execute("Select * FROM "+table_name)
+        self.cur.execute("SELECT * FROM " + table_name)
         c_name = [desc[0] for desc in self.cur.description][0]
         columns = """"""
-        if column_names != None: #если указываются, добавляем в раздел со столбцами
-                assert len(column_names) == len(values)
-                columns+="""("""+""", """.join(column_names)+""")"""
+        if column_names != None:  # если указываются, добавляем в раздел со столбцами
+            assert len(column_names) == len(values)
+            columns += """(""" + """, """.join(column_names) + """)"""
         condition = []
         for i in values:
-            try:
-                condition.append(psycopg2.extensions.adapt(i).getquoted())
-            except:
-                condition.append("""\'"""""+ i +"""\'""""")
-        print ("""INSERT INTO """+ table_name+""" """+columns+""" """+"""VALUES ("""+""", """.join(condition)+""") RETURNING """+c_name+""";""")
-        self.cur.execute("""INSERT INTO """+ table_name+""" """+columns+""" """+"""VALUES ("""+""", """.join(condition)+""") RETURNING """+c_name+""";""")
-        id_of_new_row = self.cur.fetchone()[0]
+            condition.append(self.checktype(i))
+        print("""INSERT INTO """ + table_name + """ """ + columns + """ """ + """VALUES (""" + """, """.join(
+            condition) + """)""")
+        self.cur.execute("""INSERT INTO """ + table_name + """ """ + columns + """ """ + """VALUES (""" + """, """.join(
+            condition) + """)""")
+        id_of_new_row = self.cur.lastrowid
         self.con.commit()
         return id_of_new_row
 
-    def delete(self,table, textid=None, clustid=None, personid=None):
+    def delete(self, table, textid=None, clustid=None, personid=None):
         """
         :param table: имя таблицы, откуда происходит удаление
         :param textid: условия для поиска строк, которые необходимо удалить
@@ -184,13 +181,13 @@ class SQL_query():
         :return: запрос для удаления
         """
         self.ensure_connection()
-        query = """DELETE FROM """+table+""" WHERE """
-        if textid!=None:
-            query += self.__select_condition("""textid""",textid)
-        if personid!=None:
-            query += self.__select_condition("""personid""",personid)
-        if clustid!=None:
-            query += self.__select_condition("""clustid""",clustid)
+        query = """DELETE FROM """ + table + """ WHERE """
+        if textid != None:
+            query += self.__select_condition("""textid""", textid)
+        if personid != None:
+            query += self.__select_condition("""personid""", personid)
+        if clustid != None:
+            query += self.__select_condition("""clustid""", clustid)
         query += """1=1;"""
         return query
 
@@ -205,7 +202,7 @@ class SQL_query():
         self.ensure_connection()
         query = """SELECT source FROM texts """
         query += """WHERE """
-        if textname!=None:
-            query += self.__select_condition("""textname""",textname)
-        query+="""1=1;"""
+        if textname != None:
+            query += self.__select_condition("""textname""", textname)
+        query += """1=1;"""
         return query

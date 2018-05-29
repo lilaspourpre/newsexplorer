@@ -3,9 +3,6 @@ import codecs
 from nltk import pos_tag, ne_chunk
 from nltk.tokenize import word_tokenize
 
-from all.ui.articles.NerAndClusering.aggClustLink import Clustering
-
-
 class enNER():
 
     def character_recognition(self, text):
@@ -18,7 +15,7 @@ class enNER():
 
     def preprocessing(self, text):
         listOfNames = []
-        sent = word_tokenize(text.encode('utf-8'))
+        sent = word_tokenize(text)
         nerWords = ne_chunk(pos_tag(sent), binary=False)
         for i in range(len(nerWords)):
             word = nerWords[i]

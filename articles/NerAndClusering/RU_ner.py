@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 import codecs
 from nltk.tokenize import word_tokenize, sent_tokenize
-from sklearn.feature_extraction.text import CountVectorizer
-import sklearn.cluster
 import pymorphy2
-from aggClustLink import Clustering
 
 class ruNER():
 

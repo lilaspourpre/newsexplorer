@@ -12,9 +12,9 @@ for i in mytxt:
     try:
         text = codecs.open(path1+path+"\\"+i, 'r', 'utf-8').read()
         if u"Путин" in text:
-            print i.decode("cp1251")
+            print(i.decode("cp1251"))
             count += 1
     except:
         errors += 1
         pass
-print count
+print(count)

@@ -14,15 +14,15 @@ class Clustering():
         # Plotting
         axes23[0].plot(range(1, len(z)+1), z[::-1, 2])
         knee = np.diff(z[::-1, 2], 2)
-        print knee
+        print(knee)
         axes23[0].plot(range(2, len(z)), knee)
 
         num_clust1 = knee.argmax() + 2
-        print knee[knee.argmax()]
-        print knee.argmax()
+        print(knee[knee.argmax()])
+        print(knee.argmax())
         knee[knee.argmax()] = 0
 
-        print num_clust1, z[::-1, 2][num_clust1-1]
+        print(num_clust1, z[::-1, 2][num_clust1-1])
         axes23[0].text(num_clust1, z[::-1, 2][num_clust1-1], 'possible\n<- knee point')
 
         hac.dendrogram(z)
@@ -46,7 +46,7 @@ class Clustering():
             knee = self.returnKnee(counts.toarray(), ru)  # находим количество кластеров, на которое будем делить
         else:
             knee = n_clusters
-        print knee
+        print(knee)
         self.plotClusters(counts.toarray())
         machine = sklearn.cluster.AgglomerativeClustering(n_clusters=knee)  # запукаем машину
         resList = list(machine.fit_predict(counts.todense()))  # получаем список результатов
@@ -71,7 +71,7 @@ class Clustering():
                 for j in i.split(" "):
                     try:
                         dictNames[j]+=1
-                    except KeyError, e:
+                    except KeyError as e:
                         pass
 
         val = max(dictNames.values())
