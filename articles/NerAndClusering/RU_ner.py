@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 import codecs
+import texterra
 from nltk.tokenize import word_tokenize, sent_tokenize
 import pymorphy2
 
 class ruNER():
+    def __init__(self):
+        self.t = texterra.API("c41d9b98960e6f6bdfb3452f6b174e5a6554f992")
 
     def preprocessing(self, text):
+        tokens = list(self.t.tokenization(text, language="russian"))
+        print(tokens)
         wordlist = word_tokenize(text) #splitting names
         sentences = sent_tokenize(text)
         animateObjects = self.posTagging(wordlist) #getting animObj with pymorphy2
