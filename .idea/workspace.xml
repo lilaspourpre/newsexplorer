@@ -2,45 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0b3f4d4-9c71-4aca-ba22-b85fd833ecc3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/document.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/abstract_feature.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/case.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/case_concordance.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/check_element_feature.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/check_in_list_feature.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/composite.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/context_feature.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/df.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/embedding_feature.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/gazetteer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/if_no_lowercase.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/length.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/letters.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/morpho_case.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/morpho_feature.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/not_in_stop_words.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/numbers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/part_of_speech.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/position_in_sentence.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/predicate_feature.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/prefix_feature.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/punctuation.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/special_chars.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/features/suffix_feature.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/random_model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/rnn_model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/tagged_token.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/tagged_vector.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/entities/token.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/feature_model_computer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/from_bilou.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/tryNN.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/wrapper.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/rnn_model_2018.06.05-13.49.09/saved_model.pb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/rnn_model_2018.06.05-13.49.09/variables/variables.data-00000-of-00001" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/articles/NerAndClusering/rnn_model_2018.06.05-13.49.09/variables/variables.index" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/articles/NerAndClusering/RU_ner.py" afterPath="$PROJECT_DIR$/articles/NerAndClusering/RU_ner.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,9 +43,11 @@
       <file leaf-file-name="feature_model_computer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/articles/NerAndClusering/feature_model_computer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="336">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -482,7 +449,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527611471095</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add RNN model (not implemented)">
+      <created>1529071249355</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1529071249355</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -514,7 +488,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="working baseline solution" />
-    <option name="LAST_COMMIT_MESSAGE" value="working baseline solution" />
+    <MESSAGE value="add RNN model (not implemented)" />
+    <option name="LAST_COMMIT_MESSAGE" value="add RNN model (not implemented)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -983,9 +958,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/articles/NerAndClusering/feature_model_computer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="336">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
