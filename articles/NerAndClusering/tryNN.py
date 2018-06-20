@@ -8,16 +8,24 @@ from entities.tagged_vector import TaggedVector
 from feature_model_computer import compute_feature_and_model
 from from_bilou import untag
 
-class ruNER():
+class RuNER_NN():
     def __init__(self):
         self.t = texterra.API("c41d9b98960e6f6bdfb3452f6b174e5a6554f992")
 
     def process(self, text, textname):
         morph_analyzer = pymorphy2.MorphAnalyzer()
         tokenslist = list(self.t.tokenization(text, language="ru"))[0]
+        print(tokenslist)
         test_documents = self.get_documents_without_tags_from(tokenslist, morph_analyzer, textname)
         feature, model = compute_feature_and_model()
-        return self.compute_nes(test_documents, feature, model)
+        return self.toList(self.compute_nes(test_documents, feature, model), text)
+
+    def toList(self, result, text):
+        ne_list = []
+        for i in range(len(result)):
+            if result[i][0] == "PER":
+                ne_list.append(text[result[i][1]:result[i][1] + result[i][2]])
+        return ne_list
 
     def character_recognition(self, textname):
         if '.txt' not in textname:
@@ -59,7 +67,6 @@ class ruNER():
         :return: list of token classes
         """
         tokens = []
-        print(tokenslist)
         for i in range(len(tokenslist)):
             token = Token(tokenid=i, position=tokenslist[i][0],
                           length=tokenslist[i][1]-tokenslist[i][0], text=tokenslist[i][2])
@@ -97,10 +104,8 @@ class ruNER():
         return TaggedVector(vector=vector, tag=tag)
 
 
-
-ner = ruNER()
-dic = ner.process("Мама мыла рума. Раму мыла мама. Хе-хе", "name")
-r = "Мама мыла рума. Раму мыла мама. Хе-хе"
-print(dic[0][0], r[dic[0][1]:dic[0][1]+dic[0][2]])
-print(dic)
-#print(dic[1][0], r[dic[1][1]:dic[1][1]+dic[1][2]])
+#
+# ner = RuNER_NN()
+# r = "Мама мыла  Инна рума. Раму мыла Кошка Марина мама Владимир Путин. Хе-хе"
+# dic = ner.process(r, "r")
+# print(dic)

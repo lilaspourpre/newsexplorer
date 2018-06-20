@@ -300,9 +300,7 @@ class InfoRelations(QDialog):
         resArticles = self.getArticles(articles)
         self.language = "RU" if "RU" in resArticles[0] else "EN"
         self.textBrowser.setText("\n".join(
-            [text.replace("newsexplorer/articles/Documents/RUtexts/", "")
-                 .replace("newsexplorer/articles/Documents/ENtexts/", "")
-                 .replace(".txt", "")
+            [os.path.basename(text).replace(".txt", "")
              for text in resArticles]))
         self.textBrowser_2.setText("<br><br>".join(self.getDBInfo(name, resArticles, self.language)))
 

@@ -48,7 +48,9 @@ class Clustering():
             knee = n_clusters
         print(knee)
         self.plotClusters(counts.toarray())
-        machine = sklearn.cluster.AgglomerativeClustering(n_clusters=knee)  # запукаем машину
+        affinity = sklearn.cluster.AffinityPropagation().fit(counts.todense())
+        n_clusters_aff = len(affinity.cluster_centers_indices_)
+        machine = sklearn.cluster.KMeans(n_clusters=n_clusters_aff)  # запукаем машину
         resList = list(machine.fit_predict(counts.todense()))  # получаем список результатов
         groups = [[] for i in range(max(resList) + 1)]  # делаем список списков групп
         for i in range(len(names)):  # для каждого имени

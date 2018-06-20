@@ -1,5 +1,6 @@
 from itertools import product
 
+import os
 from gensim.models import FastText
 
 from entities.features.composite import FeatureComposite
@@ -22,7 +23,7 @@ from entities.features.if_no_lowercase import LowerCaseFeature
 from entities.features.gazetteer import GazetterFeature
 from entities.features.embedding_feature import EmbeddingFeature
 from entities.rnn_model import RNNModel
-
+import pickle
 import tensorflow as tf
 
 
@@ -31,23 +32,33 @@ def compute_feature_and_model():
     embedding_model = None
     affixes = get_affixes()
     feature = get_composite_feature(2, affixes, 2, embedding_model)
-    saver = tf.train.Saver()
-    with tf.Session() as session:
-        initialize(session)
-
+    session = tf.Session()
+    path = os.path.join("..", "articles", "NerAndClusering")
+    saver = tf.train.import_meta_graph(os.path.join(path, "rnn_model_2018.06.20-15.30.24",'rnn_model_2018.06.20-15.30.24.meta'))
+    saver.restore(session, tf.train.latest_checkpoint(os.path.join(path, "rnn_model_2018.06.20-15.30.24")))
+    #op = session.graph.get_operations()
+    #print([m.values() for m in op])
+    graph = tf.get_default_graph()
+    x = graph.get_tensor_by_name("x:0")
+    seqlen = graph.get_tensor_by_name("seqlen:0")
+    outputs = graph.get_tensor_by_name("fc/BiasAdd:0")
     model = RNNModel(session, outputs, x, seqlen, tags, saver)
     return feature, model
-
-def initialize(session):
-    tf.train.Saver().restore(session, "rnn_model_2018.06.05-13.49.09" + '/variables/variables')
 
 
 def get_model_for_embeddings(model_path):
     model = FastText.load_fasttext_format(model_path)
     return model
 
+
 def get_affixes():
-    return {"prefix": set(), "suffix": set()}
+    path = os.path.join("..", "articles", "NerAndClusering", "affixes")
+    with open(os.path.join(path, "prefixes.pickle"), 'rb') as pref:
+        prefixes = pickle.load(pref)
+    with open(os.path.join(path, "suffixes.pickle"), 'rb') as suf:
+        suffixes = pickle.load(suf)
+    return {"prefix": prefixes, "suffix": suffixes}
+
 
 def compute_tags():
     tags = ["PER", "LOC", "ORG"]

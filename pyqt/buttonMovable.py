@@ -90,9 +90,7 @@ class InfoNode(QDialog):
         self.label.setFont(QtGui.QFont("Times", 16, QtGui.QFont.Bold))
         lan = ["RU" if "RUtexts" in i[1] else "EN" for i in articles]
         articles1 = set(
-            [i[1].replace("newsexplorer/articles/Documents/RUtexts/", "")
-                 .replace("newsexplorer/articles/Documents/ENtexts/", "")
-                 .replace(".txt", "")
+            [os.path.basename(i).replace(".txt", "")
                  for i in
              articles])
 

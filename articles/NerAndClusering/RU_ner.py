@@ -1,27 +1,21 @@
 # -*- coding: utf-8 -*-
 import codecs
-import texterra
+from tryNN import RuNER_NN
 from nltk.tokenize import word_tokenize, sent_tokenize
 import pymorphy2
 
 class ruNER():
     def __init__(self):
-        self.t = texterra.API("c41d9b98960e6f6bdfb3452f6b174e5a6554f992")
+        self.nerc_nn = RuNER_NN()
 
     def preprocessing(self, text):
-        tokens = list(self.t.tokenization(text, language="russian"))
-        print(tokens)
-        wordlist = word_tokenize(text) #splitting names
-        sentences = sent_tokenize(text)
-        animateObjects = self.posTagging(wordlist) #getting animObj with pymorphy2
-        namesFormed = self.findPersonalNames(sentences, wordlist,animateObjects) #forming names
-        return namesFormed
+        return self.nerc_nn.process(text.strip(), "")
 
-    def character_recognition(self, text):
-        if '.txt' not in text:
-            text+='.txt'
-        text = codecs.open(text.encode("cp1251"), 'r', 'utf-8').read()
-        return self.preprocessing(text.strip())
+    def character_recognition(self, textname):
+        if '.txt' not in textname:
+            textname+='.txt'
+        text = codecs.open(textname.encode("cp1251"), 'r', 'utf-8').read()
+        return self.nerc_nn.process(text.strip(), textname)
 
     def posTagging(self, sentences):
         animObjects = []
@@ -79,12 +73,7 @@ class ruNER():
         checkedWords.append(" ".join(wordlist)) #после прохождения списка добавляем остаток
         return checkedWords
 
-
+#
 # ruNERc = ruNER()
-# names = ruNERc.character_recognition(u"Богданов обсудил с президентом Сомали вопросы двусторонних отношений")
-# for i in names.keys():
-#     print i
-#     for j in names.get(i):
-#         print j,
-#     print
-#     print "***"
+# names = ruNERc.preprocessing("Богданов обсудил с Владимир президентом Сомали вопросы двусторонних отношений")
+# print(names)

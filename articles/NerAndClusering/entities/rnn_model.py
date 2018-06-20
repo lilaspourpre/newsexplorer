@@ -19,7 +19,6 @@ class RNNModel(Model):
     def split_batch_predict(self, list_of_vectors, division):
         splitted_vectors, seqlen_list = format_data(list_of_vectors, division)
         array_of_vectors = complement_data(splitted_vectors)
-
         correct_prediction = tf.argmax(self.outputs, 2)
 
         index_list, output___ = self.session.run([correct_prediction, self.outputs],
