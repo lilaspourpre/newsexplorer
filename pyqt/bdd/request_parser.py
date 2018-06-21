@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-import pyqt.article_parser as ap
-import database_search_engine as dse
+import article_parser as ap
+import bdd.database_search_engine as dse
 
 
 class RequestParser(dse.SQL_query):

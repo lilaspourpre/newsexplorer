@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import database_search_engine as dse
+import bdd.database_search_engine as dse
 import sqlite3
 
 RP = dse.SQL_query()
