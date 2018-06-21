@@ -6,8 +6,8 @@ import codecs
 import os
 from graphform import GraphForm
 from AddingToDatabase import AddingToDatabase
-from articles.NerAndClusering import EN_ner, RU_ner
-from articles.NerAndClusering.aggClustLink import Clustering
+from NerAndClusering import EN_ner, RU_ner
+from NerAndClusering.aggClustLink import Clustering
 import psycopg2
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QFileDialog, QDialog
 from PyQt5 import QtCore, uic

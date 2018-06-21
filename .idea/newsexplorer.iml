@@ -6,7 +6,6 @@
       <sourceFolder url="file://$MODULE_DIR$/bdd/sqlFile" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bdd" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/articles/crawling" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/articles/NerAndClusering" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
